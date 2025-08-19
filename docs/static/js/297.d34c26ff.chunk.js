@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkstay_folio_documents=self.webpackChunkstay_folio_documents||[]).push([[297],{1297:(e,s,c)=>{c.d(s,{createArchitectureServices:()=>t.S});var t=c(4564);c(4455)}}]);

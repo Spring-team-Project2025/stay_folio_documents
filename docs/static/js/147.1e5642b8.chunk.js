@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkstay_folio_documents=self.webpackChunkstay_folio_documents||[]).push([[147],{4147:(e,s,c)=>{c.d(s,{createInfoServices:()=>o.v});var o=c(5863);c(4455)}}]);

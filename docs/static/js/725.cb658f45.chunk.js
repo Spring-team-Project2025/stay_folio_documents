@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkstay_folio_documents=self.webpackChunkstay_folio_documents||[]).push([[725],{6725:(e,s,a)=>{a.d(s,{createTreemapServices:()=>c.d});var c=a(4027);a(4455)}}]);
