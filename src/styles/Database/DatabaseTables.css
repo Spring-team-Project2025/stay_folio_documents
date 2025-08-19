@@ -1,0 +1,255 @@
+/* Database Tables Grid */
+.db-tables-section {
+  margin-top: 24px;
+}
+
+.db-section-title {
+  font-size: var(--h2);
+  font-weight: 700;
+  color: var(--neutral-900);
+  margin: 0 0 16px;
+}
+
+.db-section.db-table-header {
+  margin-bottom: 1rem;
+}
+
+.db-table-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--neutral-900);
+  margin: 0 0 4px 0;
+  line-height: 1.4;
+}
+
+.db-table-description {
+  font-size: 0.85rem;
+  color: var(--neutral-600);
+  margin: 0;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.db-tables-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 1.5rem auto;
+  max-width: 1600px;
+  padding: 0;
+}
+
+/* Table Card */
+.db-table-card {
+  background: white;
+  border: 1px solid var(--neutral-200);
+  border-radius: 8px;
+  padding: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.db-table-card-content {
+  position: relative;
+  transition: max-height 0.3s ease;
+  overflow: hidden;
+}
+
+.db-table-card.collapsed .db-table-card-content {
+  max-height: 200px;
+}
+
+.db-table-card-actions {
+  text-align: center;
+  padding-top: 0.75rem;
+}
+
+.db-table-card-toggle {
+  background: var(--neutral-0);
+  border: 1px solid var(--primary-500);
+  color: var(--primary-600);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin-top: 4px;
+  border-radius: 12px;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease,
+    transform 0.08s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.db-table-card-toggle:hover {
+  background: var(--neutral-50);
+  border-color: var(--primary-600);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.db-table-card-toggle:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.db-table-card-toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--neutral-0), 0 0 0 4px var(--primary-500);
+}
+
+.db-table-card-toggle svg {
+  transition: transform 0.2s ease;
+  width: 16px;
+  height: 16px;
+  color: currentColor;
+}
+
+.db-table-card.collapsed .db-table-card-toggle svg {
+  transform: rotate(0deg);
+}
+
+.db-table-card:not(.collapsed) .db-table-card-toggle svg {
+  transform: rotate(180deg);
+}
+
+.db-table-header {
+  padding: 12px 0px;
+}
+
+.db-table-name {
+  margin: 0;
+  font-size: var(--body1);
+  font-weight: 600;
+  color: var(--primary-600);
+}
+
+.db-table-content {
+  padding: 12px;
+  overflow-x: auto;
+}
+
+/* Table Styles */
+.db-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--caption);
+}
+
+.db-table th {
+  text-align: left;
+  padding: 8px 6px;
+  border-bottom: 1px solid var(--neutral-300);
+  color: var(--neutral-700);
+  font-weight: 600;
+}
+
+.db-table td {
+  padding: 6px;
+  border-bottom: 1px solid var(--neutral-200);
+  color: var(--neutral-800);
+}
+
+.db-table tr:last-child td {
+  border-bottom: none;
+}
+
+.db-column-name {
+  font-weight: 500;
+  color: var(--neutral-900);
+}
+
+.db-column-type {
+  font-family: "Consolas", monospace;
+  color: var(--neutral-700);
+}
+
+.db-column-constraint {
+  color: var(--primary-600);
+  font-weight: 500;
+}
+
+/* Relationships Grid */
+.db-desc-relationships {
+  margin-top: 24px;
+}
+
+.db-rel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0 0 0;
+}
+
+.db-rel-item {
+  background: var(--neutral-50);
+  border: 1px solid var(--neutral-200);
+  border-radius: 8px;
+  padding: 12px 14px;
+  min-height: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.db-rel-item:hover {
+  background: var(--neutral-0);
+  border-color: var(--neutral-300);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.db-rel-title {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-size: var(--caption);
+  color: var(--neutral-900);
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.db-rel-desc {
+  font-size: 0.8rem;
+  color: var(--neutral-700);
+  line-height: 1.4;
+}
+
+/* Responsive Grid */
+@media (max-width: 1024px) {
+  .db-tables-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding: 0 1.5rem;
+  }
+  .db-rel-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .db-tables-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding: 0 1.25rem;
+  }
+  .db-rel-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .db-section-title {
+    font-size: var(--body1);
+  }
+}

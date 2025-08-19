@@ -1,0 +1,105 @@
+.db {
+  width: 100%;
+  padding: 0; /* remove shared padding so topbar/content aren't grouped */
+}
+
+.db-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 12px 100px; /* topbar has its own padding */
+  background: var(--neutral-0);
+  border-bottom: 1px solid var(--neutral-200); /* visual divider */
+  position: sticky; /* keep tabs visible and distinct */
+  top: 0;
+  z-index: 5;
+}
+
+.db-tabs {
+  display: flex;
+  gap: 12px;
+}
+
+.db-tab {
+  appearance: none;
+  font-size: var(--body1);
+  background: none;
+  border: none;
+  color: var(--neutral-600);
+  padding: 8px 16px;
+  position: relative;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.db-tab:hover {
+  color: var(--neutral-900);
+}
+
+.db-tab.is-active {
+  color: var(--primary-600);
+  font-weight: 600;
+}
+
+.db-tab.is-active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 16px;
+  right: 16px;
+  height: 2px;
+  background-color: var(--primary-600);
+}
+
+.db-tab:hover::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 16px;
+  right: 16px;
+  height: 2px;
+  background-color: var(--neutral-400);
+  opacity: 0.7;
+}
+
+.db-tab.is-active:hover::after {
+  background-color: var(--primary-600);
+  opacity: 1;
+}
+
+.db-tab:focus-visible {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
+}
+
+/* Make ERD area fill viewport height below the header/topbar without overflowing */
+.db {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - var(--header-height));
+}
+
+.db-content {
+  flex: 1 1 auto;
+  min-height: 0; /* allow children with 100% height to work */
+  max-height: 100%;
+  position: relative;
+  display: flex; /* let child fill remaining height */
+  align-items: stretch;
+  padding: 16px 0; /* content has its own padding */
+  max-width: 1480px; /* keep DESC content nicely centered */
+  margin: 0 auto;
+}
+
+/* Make direct child (ERD or DESC) fill available height without causing overflow */
+.db-content > * {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* Ensure ERD viewport fills remaining height when rendered directly under .db */
+.db > .erd-viewport {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: block;
+}

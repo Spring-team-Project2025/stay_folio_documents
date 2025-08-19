@@ -1,0 +1,30 @@
+.db-desc {
+  padding: 16px 0;
+  color: var(--neutral-800);
+}
+
+.db-desc-title {
+  font-size: var(--h2);
+  font-weight: 700;
+  color: var(--neutral-900);
+  margin: 0 0 8px;
+}
+
+.db-desc-updated {
+  font-size: var(--caption);
+  color: var(--neutral-600);
+  margin: 0 0 12px;
+}
+
+.db-desc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.db-desc-list li strong {
+  color: var(--neutral-700);
+  margin-right: 8px;
+}
