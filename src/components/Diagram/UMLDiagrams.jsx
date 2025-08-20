@@ -57,13 +57,13 @@ flowchart LR
     end
     
     subgraph "Business Layer"
-        CS["<b>CommonService</b><br/><i>[Interface</i><br/>비즈니스 로직 정의"]
+        CS["<b>CommonService</b><br/><i><<Interface>></i><br/>비즈니스 로직 정의"]
         CSI["<b>CommonServiceImpl</b><br/><i>비즈니스 로직 구현</i><br/>• isEmailDuplicate()<br/>• isPhoneDuplicate()<br/>• handleRegister()<br/>• getRecommend()"]
     end
     
     subgraph "Data Access Layer"
-        CM["<b>CommonMapper</b><br/><i>[Interface]</i><br/><i>회원 데이터 접근</i><br/>• countByEmail()<br/>• countByPhone()<br/>• handleRegister()<br/>• read()"]
-        RM["<b>RecommendMapper</b><br/><i>[Interface]</i><br/><i>추천 데이터 접근</i><br/>• getRecommend()<br/>• getRecommendTitle()"]
+        CM["<b>CommonMapper</b><br/><i><<Interface>></i><br/><i>회원 데이터 접근</i><br/>• countByEmail()<br/>• countByPhone()<br/>• handleRegister()<br/>• read()"]
+        RM["<b>RecommendMapper</b><br/><i><<Interface>></i><br/><i>추천 데이터 접근</i><br/>• getRecommend()<br/>• getRecommendTitle()"]
     end
     
     subgraph "Data Objects"
@@ -110,12 +110,12 @@ flowchart LR
     end
     
     subgraph "Business Layer"
-        BS["<b>BookmarkService</b><br/><i>[Interface]</i><br/>북마크 비즈니스 로직"]
+        BS["<b>BookmarkService</b><br/><i><<Interface>></i><br/>북마크 비즈니스 로직"]
         BSI["<b>BookmarkServiceImpl</b><br/><i>북마크 로직 구현</i><br/>• addBookmark()<br/>• deleteBookmark()<br/>• getBookmarkList()"]
     end
     
     subgraph "Data Access Layer"
-        BM["<b>BookmarkMapper</b><br/><i>[Interface]</i><br/><i>북마크 데이터 접근</i><br/>• addBookmark()<br/>• deleteBookmark()<br/>• getBookmarkList()"]
+        BM["<b>BookmarkMapper</b><br/><i><<Interface>></i><br/><i>북마크 데이터 접근</i><br/>• addBookmark()<br/>• deleteBookmark()<br/>• getBookmarkList()"]
         SM["<b>StayMapper</b><br/><i>숙소 북마크 카운트</i><br/>• incBookmarkCount()<br/>• decBookmarkCount()"]
     end
     
@@ -162,12 +162,12 @@ flowchart LR
     end
     
     subgraph "Business Layer"
-        MS["<b>MypageService</b><br/><i>[Interface]</i><br/>마이페이지 비즈니스 로직"]
+        MS["<b>MypageService</b><br/><i><<Interface>></i><br/>마이페이지 비즈니스 로직"]
         MSI["<b>MypageServiceImpl</b><br/><i>마이페이지 로직 구현</i><br/>• readMemberById()<br/>• updateMemberProfile()<br/>• changePassword()<br/>• getReservationHistory()<br/>• getBookMarkList()"]
     end
     
     subgraph "Data Access Layer"
-        MM["<b>MypageMapper</b><br/><i>[Interface]</i><br/><i>마이페이지 데이터 접근</i><br/>• updateProfile()<br/>• updatePassword()<br/>• getReservationsByMember()<br/>• getBookMarkList()"]
+        MM["<b>MypageMapper</b><br/><i><<Interface>></i><br/><i>마이페이지 데이터 접근</i><br/>• updateProfile()<br/>• updatePassword()<br/>• getReservationsByMember()<br/>• getBookMarkList()"]
         CM["<b>CommonMapper</b><br/><i>회원 정보 접근</i><br/>• read()<br/>• countByPhone()"]
     end
     
@@ -218,12 +218,12 @@ flowchart LR
     end
     
     subgraph "Business Layer"
-        RES["<b>RecommendService</b><br/><i>[Interface]</i><br/>추천 비즈니스 로직"]
+        RES["<b>RecommendService</b><br/><i><<Interface>></i><br/>추천 비즈니스 로직"]
         RESI["<b>RecommendServiceImpl</b><br/><i>추천 로직 구현</i><br/>• getRecommendByLocation()<br/>• getRecommendByCategory()"]
     end
     
     subgraph "Data Access Layer"
-        REM["<b>RecommendMapper</b><br/><i>[Interface]</i><br/><i>추천 데이터 접근</i><br/>• getRecommend()<br/>• getRecommendTitle()"]
+        REM["<b>RecommendMapper</b><br/><i><<Interface>></i><br/><i>추천 데이터 접근</i><br/>• getRecommend()<br/>• getRecommendTitle()"]
         SM["<b>StayMapper</b><br/><i>숙소 데이터 접근</i><br/>• selectRecommendStayList()"]
     end
     
@@ -274,18 +274,19 @@ flowchart LR
     end
     
     subgraph "Business Layer"
-        RS["<b>ReservationService</b><br/><i>[Interface]</i><br/>예약 비즈니스 로직"]
+        RS["<b>ReservationService</b><br/><i><<Interface>></i><br/>예약 비즈니스 로직"]
         RSI["<b>ReservationServiceImpl</b><br/><i>예약 로직 구현</i><br/>• reserve()<br/>• cancelReservation()<br/>• getReservation()<br/>• calculatePrice()<br/>• processEmail()"]
     end
     
     subgraph "Data Access Layer"
-        RM["<b>ReservationMapper</b><br/><i>[Interface]</i><br/><i>예약 데이터 접근</i><br/>• insertReservation()<br/>• selectReservationById()<br/>• cancelReservation()<br/>• checkDuplicateReservation()"]
-        RPM["<b>ReservationPriceMapper</b><br/><i>가격 정보 조회</i><br/>• getReservationPriceInfo()"]
+        RM["<b>ReservationMapper</b><br/><i><<Interface>></i><br/><i>예약 데이터 접근</i><br/>• insertReservation()<br/>• selectReservationById()<br/>• cancelReservation()<br/>• checkDuplicateReservation()"]
+        RPM["<b>ReservationPriceMapper</b><br/><i><<Interface>></i><br/><i>가격 정보 조회</i><br/>• getReservationPriceInfo()"]
     end
     
     subgraph "Data Objects"
         RDV["<b>ReservationDetailVO</b><br/><i>예약 상세 객체</i><br/>• srId: String<br/>• siName: String<br/>• srStatus: String<br/>• srTotalprice: int<br/>• srEmail: String<br/>• srCheckin: Date<br/>• srCheckout: Date"]
         RCC["<b>ReservationCancelCheckVO</b><br/><i>취소 확인 객체</i><br/>• srId: String<br/>• srStatus: String<br/>• srCheckin: Date"]
+        RDT["<b>ReservationDTO</b><br/><i>예약 데이터 전송 객체</i><br/>• siPeak: double<br/>• siDiscount: double<br/>• riPrice: int<br/>• siOff: double<br/>• nights: long"]
     end
     
     subgraph "Database"
@@ -329,12 +330,12 @@ flowchart LR
     end
     
     subgraph "Business Layer"
-        ROS["<b>RoomService</b><br/><i>[Interface]</i><br/>객실 비즈니스 로직"]
+        ROS["<b>RoomService</b><br/><i><<Interface>></i><br/>객실 비즈니스 로직"]
         ROSI["<b>RoomServiceImpl</b><br/><i>객실 로직 구현</i><br/>• getRoomById()<br/>• updateRoom()<br/>• getAmenitiesByRoomId()<br/>• getFacilitiesByRoomId()<br/>• getAllRoomPhotos()"]
     end
     
     subgraph "Data Access Layer"
-        ROM["<b>RoomMapper</b><br/><i>[Interface]</i><br/><i>객실 데이터 접근</i><br/>• getRoomById()<br/>• updateRoom()<br/>• getAmenitiesByRoomId()<br/>• getFacilitiesByRoomId()<br/>• getRoomPhotos()"]
+        ROM["<b>RoomMapper</b><br/><i><<Interface>></i><br/><i>객실 데이터 접근</i><br/>• getRoomById()<br/>• updateRoom()<br/>• getAmenitiesByRoomId()<br/>• getFacilitiesByRoomId()<br/>• getRoomPhotos()"]
         RSM["<b>ReservationService</b><br/><i>예약 가능일 확인</i><br/>• getUnavailableDates()"]
     end
     
@@ -343,6 +344,7 @@ flowchart LR
         FVO["<b>FacilityVO</b><br/><i>시설 정보 객체</i><br/>• fiId: Integer<br/>• fiName: String<br/>• fiIcon: String"]
         AVO["<b>AmenityVO</b><br/><i>편의시설 객체</i><br/>• aiIdx: Integer<br/>• raName: String"]
         RPV["<b>RoomPhotoVO</b><br/><i>객실 사진 객체</i><br/>• spIdx: int<br/>• spUrl: String"]
+        SDV["<b>StayDetailVO</b><br/><i>숙소 상세 정보 객체</i><br/>• siId: int<br/>• siCheckin: String<br/>• siCheckout: String<br/>• siFood: boolean<br/>• siParking: boolean"]
     end
     
     subgraph "Database"
@@ -388,12 +390,12 @@ flowchart LR
     end
     
     subgraph "Business Layer"
-        SS["<b>StayService</b><br/><i>[Interface]</i><br/>숙소 검색 비즈니스 로직"]
+        SS["<b>StayService</b><br/><i><<Interface>></i><br/>숙소 검색 비즈니스 로직"]
         SSI["<b>StayServiceImpl</b><br/><i>검색 로직 구현</i><br/>• searchStaysByKeyword()<br/>• getStayListFiltered()<br/>• searchStaysSuggestions()<br/>• getListWithPaging()<br/>• getTotalCount()"]
     end
     
     subgraph "Data Access Layer"
-        SM["<b>StayMapper</b><br/><i>[Interface]</i><br/><i>숙소 검색 데이터 접근</i><br/>• searchStaysByKeyword()<br/>• selectStayListFiltered()<br/>• searchStaysSuggestions()<br/>• getListWithPaging()<br/>• getTotalCount()"]
+        SM["<b>StayMapper</b><br/><i><<Interface>></i><br/><i>숙소 검색 데이터 접근</i><br/>• searchStaysByKeyword()<br/>• selectStayListFiltered()<br/>• searchStaysSuggestions()<br/>• getListWithPaging()<br/>• getTotalCount()"]
         BM["<b>BookmarkMapper</b><br/><i>북마크 상태 확인</i><br/>• getBookmarkList()"]
     end
     
@@ -401,6 +403,7 @@ flowchart LR
         SVO["<b>StayVO</b><br/><i>숙소 정보 객체</i><br/>• siId: int<br/>• siName: String<br/>• siDesc: String<br/>• siLoca: String<br/>• siMinprice: Integer<br/>• bookmarked: boolean<br/>• spUrl: String"]
         SSRV["<b>StaySearchResultVO</b><br/><i>검색 결과 객체</i><br/>• siId: int<br/>• siName: String<br/>• siLoca: String<br/>• siMinprice: int<br/>• bookmarked: boolean<br/>• totalPerson: int"]
         CRI["<b>Criteria</b><br/><i>페이징 객체</i><br/>• pageNum: int<br/>• amount: int<br/>• keyword: String"]
+        PVO["<b>PhotoVO</b><br/><i>사진 정보 객체</i><br/>• spIdx: int<br/>• spUrl: String<br/>• siId: int"]
     end
     
     subgraph "Database"
