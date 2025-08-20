@@ -149,12 +149,12 @@
 }
 
 .erd-column.is-primary-key {
-  background: #fef3c7;
+  background: white;
   border-left: 3px solid #f59e0b;
 }
 
 .erd-column.is-foreign-key {
-  background: #dbeafe;
+  background: white;
   border-left: 3px solid #3b82f6;
 }
 

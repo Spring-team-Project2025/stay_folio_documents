@@ -1,0 +1,147 @@
+.diagram {
+  width: 100%;
+}
+
+.diagram-topbar {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 20px;
+  background: var(--neutral-0);
+  border-bottom: 1px solid var(--neutral-200);
+  max-width: 1480px;
+  min-width: 1480px;
+  margin: 0 auto;
+}
+
+.diagram-title {
+  margin: 0;
+  font-size: var(--h2);
+  font-weight: 700;
+  color: var(--neutral-900);
+}
+
+.diagram-subtitle {
+  margin: 0;
+  font-size: var(--body1);
+  color: var(--neutral-600);
+}
+
+.diagram-content {
+  max-width: 1480px;
+  min-width: 1480px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  background: var(--neutral-0);
+}
+
+/* Diagram Type Toggle */
+.diagram-type-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.diagram-type-btn {
+  padding: 8px 16px;
+  border: 1px solid var(--neutral-300);
+  border-radius: 6px;
+  background: var(--neutral-0);
+  color: var(--neutral-700);
+  font-size: var(--body2);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.diagram-type-btn:hover {
+  background: var(--neutral-50);
+  border-color: var(--neutral-400);
+}
+
+.diagram-type-btn.is-active {
+  background: var(--primary-500);
+  border-color: var(--primary-500);
+  color: var(--neutral-0);
+}
+
+/* Mermaid Diagram Styles */
+
+
+.mermaid-container {
+  width: 100%;
+  background: var(--neutral-0);
+  border: 1px solid var(--neutral-200);
+  border-radius: 12px;
+  padding: 32px;
+  overflow-x: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s ease;
+}
+
+.mermaid-container:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.mermaid-diagram {
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  border-radius: 8px;
+  position: relative;
+}
+
+.mermaid-diagram svg {
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.1));
+  transition: transform 0.2s ease;
+}
+
+/* UML Class Diagram Styles */
+.uml-class-diagram {
+  width: 100%;
+}
+
+.uml-class-diagram .mermaid-container {
+  min-height: 700px;
+  background: white;
+}
+
+.uml-class-diagram .mermaid-diagram {
+  min-height: 700px;
+  background: transparent;
+}
+
+/* Enhanced Mermaid Node Styling */
+.mermaid-container .node rect {
+  rx: 8px;
+  ry: 8px;
+}
+
+.mermaid-container .node .label {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 500;
+}
+
+.mermaid-container .edgePath path {
+  stroke-width: 2px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+}
+
+.mermaid-container .cluster rect {
+  rx: 12px;
+  ry: 12px;
+  stroke-width: 2px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.08));
+}
+
+/* Remove background from p tags in Mermaid diagrams */
+.mermaid-container p,
+.mermaid-diagram p {
+  background: none !important;
+  background-color: transparent !important;
+}

@@ -1,22 +1,16 @@
-import React from "react";
-import "../styles/Diagram.css";
+import React, { useState } from "react";
+import "../styles/Diagram/Diagram.css";
+import "../styles/Database/Database.css";
+import DiagramTopbar from "../components/Diagram/DiagramTopbar";
+import UMLDiagramViewport from "../components/Diagram/UMLDiagramViewport";
 
 function Diagram() {
+  const [tab, setTab] = useState("common");
+
   return (
-    <section className="diagram">
-      <div className="diagram-topbar">
-        <h1 className="diagram-title">Diagram</h1>
-        <p className="diagram-subtitle">
-          스키마 다이어그램과 관련 시각화를 모아 보여줍니다.
-        </p>
-      </div>
-      <main
-        className="diagram-content"
-        role="region"
-        aria-label="Diagram Content Area"
-      >
-        {/* TODO: 다이어그램 콘텐츠 추가 예정 */}
-      </main>
+    <section className="db">
+      <DiagramTopbar tab={tab} onChangeTab={setTab} />
+      <UMLDiagramViewport tab={tab} />
     </section>
   );
 }

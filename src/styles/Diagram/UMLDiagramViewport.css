@@ -1,0 +1,72 @@
+/* UML Diagram specific overrides - inherits from DatabaseERDViewport.css */
+
+/* UML Diagram Content Styles */
+.erd-content .mermaid svg {
+  max-width: none !important;
+  max-height: none !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+/* UML Class Diagram Styling - Clean and Readable */
+.erd-content .node rect {
+  fill: white !important;
+  stroke: #333 !important;
+  stroke-width: 1.5px !important;
+  rx: 4px !important;
+  ry: 4px !important;
+}
+
+.erd-content .node text {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  font-size: 11px !important;
+  fill: #333 !important;
+}
+
+.erd-content .cluster rect {
+  fill: none !important;
+  stroke: #666 !important;
+  stroke-width: 1px !important;
+  stroke-dasharray: 5,5 !important;
+}
+
+.erd-content .edgePath path {
+  stroke: #666 !important;
+  stroke-width: 1.5px !important;
+  fill: none !important;
+}
+
+.erd-content .arrowheadPath {
+  fill: #666 !important;
+  stroke: #666 !important;
+}
+
+/* Remove background colors from class boxes */
+.erd-content g[class*="classBox"] rect {
+  fill: white !important;
+}
+
+/* Reduce overall diagram width and remove long separator lines */
+.erd-content svg {
+  transform: scale(0.75) !important;
+  transform-origin: center !important;
+}
+
+/* Error display */
+.uml-error {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px;
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.uml-error strong {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+}

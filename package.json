@@ -18,8 +18,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "predeploy": "npm run build && cp build/index.html build/404.html",
-    "deploy": "gh-pages -d build",
+    "predeploy": "rm -rf docs && npm run build && mkdir -p docs && cp -r build/* docs/ && cp docs/index.html docs/404.html",
+    "deploy": "npm run predeploy && git add docs && (git commit -m \"docs: deploy\" || echo \"No changes to commit\") && git push origin master",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

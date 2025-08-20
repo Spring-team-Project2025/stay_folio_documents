@@ -3,6 +3,7 @@ import "./styles/app.css";
 import React, { useState } from "react";
 import Header from "./components/Header";
 import Database from "./pages/Database";
+import Diagram from "./pages/Diagram";
 
 function App() {
   const [tab, setTab] = useState("mermaid");
@@ -11,7 +12,7 @@ function App() {
     <div>
       <Header activeTab={tab} onNavigate={setTab} />
       <main className="app-content">
-        <Database />
+        {tab === "diagram" ? <Diagram /> : <Database />}
       </main>
     </div>
   );

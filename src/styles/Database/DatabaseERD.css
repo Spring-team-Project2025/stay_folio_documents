@@ -62,12 +62,12 @@
 }
 
 .is-primary-key {
-  background: rgba(59, 130, 246, 0.1);
+  background: white;
   font-weight: 600;
 }
 
 .is-foreign-key {
-  background: rgba(16, 185, 129, 0.1);
+  background: white;
 }
 
 .is-not-null {
