@@ -13,6 +13,14 @@ start
 :중복체크 요청;
 
 |Service|
+:countByEmail 호출;
+
+|Mapper/DB|
+:SELECT count(*) 
+ FROM t_member_info 
+ WHERE mi_id = #{email};
+
+|Service|
 if (isEmailDuplicate?) then (Y)
   :에러: 중복 이메일;
   |Controller|
@@ -21,6 +29,14 @@ if (isEmailDuplicate?) then (Y)
 else (N)
 endif
 
+:countByPhone 호출;
+
+|Mapper/DB|
+:SELECT count(*) 
+ FROM t_member_info 
+ WHERE mi_phone = #{phone};
+
+|Service|
 if (isPhoneDuplicate?) then (Y)
   :에러: 중복 전화;
   |Controller|
@@ -74,33 +90,65 @@ endif
 stop
 @enduml`,
 
-  bookmark_toggle: `@startuml
+  bookmark_add: `@startuml
 skinparam activityArrowColor Black
 skinparam activityBackgroundColor White
 skinparam wrapWidth 220
 skinparam maxMessageSize 200
+title 북마크 추가 흐름 (/api/bookmark/add, POST)
 
 |Controller|
 start
-:인증 확인(미로그인 → 401);
-:요청 파싱(miId, siId);
-:BookmarkService 호출;
+:인증 확인 (미로그인 → 401);
+:요청 파싱 및 유효성 검사 (siId 없으면 → 400);
+:BookmarkService.add(miId, siId);
 
 |Service (Tx)|
-if (북마크 여부 ) then (Y)
-  :BookmarkMapper.deleteBookmark(miId, siId);
-  :StayMapper.decBookmarkCount(siId);
-  :status=removed;
+if (이미 북마크 존재?) then (Y)
+  :status = added;  // idempotent
 else (N)
-  :BookmarkMapper.addBookmark(miId, siId);
+  :BookmarkMapper.insert(miId, siId);
   :StayMapper.incBookmarkCount(siId);
-  :status=added;
+  :status = added;
 endif
-:현재 카운트 조회(옵션);
+:count = StayMapper.getBookmarkCount(siId);
 
 |Mapper/DB|
-:INSERT/DELETE bookmark;
-:UPDATE stay.bookmark_count;
+:INSERT INTO bookmark (필요 시);
+:UPDATE stay.bookmark_count = count + 1 (필요 시);
+:SELECT stay.bookmark_count;
+
+|Controller|
+:JSON {status, count} 반환;
+stop
+@enduml`,
+
+  bookmark_delete: `@startuml
+skinparam activityArrowColor Black
+skinparam activityBackgroundColor White
+skinparam wrapWidth 220
+skinparam maxMessageSize 200
+title 북마크 삭제 흐름 (/api/bookmark/remove, DELETE) — 선조회 없이 삭제
+
+|Controller|
+start
+:인증 확인 (미로그인 → 401);
+:요청 파싱/검증 (siId 없으면 → 400);
+:BookmarkService.delete(miId, siId);
+
+|Service (Tx)|
+:deleted = BookmarkMapper.delete(miId, siId); 
+if (deleted > 0) then (Y)
+  :StayMapper.decBookmarkCount(siId);
+endif
+:status = removed;  // idempotent: 없어도 최종 상태는 'removed'
+:count = StayMapper.getBookmarkCount(siId);
+
+|Mapper/DB|
+:DELETE FROM t_stay_bookmarks WHERE mi_id = #{miId} AND si_id = #{siId};
+:UPDATE t_stay_info
+ SET si_book = GREATEST(NVL(si_book,0) - 1, 0)
+ WHERE si_id = #{siId}  (deleted>0 일 때만);
 
 |Controller|
 :JSON {status, count} 반환;

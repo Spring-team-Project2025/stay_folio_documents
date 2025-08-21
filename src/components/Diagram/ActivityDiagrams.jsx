@@ -19,8 +19,10 @@ function getPumlByTab(selectedTab) {
       return ACTIVITY_PUML.signup_duplicate_check;
     case "recommend-fetch":
       return ACTIVITY_PUML.recommend_fetch;
-    case "bookmark-toggle":
-      return ACTIVITY_PUML.bookmark_toggle;
+    case "bookmark-add":
+      return ACTIVITY_PUML.bookmark_add;
+    case "bookmark-delete":
+      return ACTIVITY_PUML.bookmark_delete;
     case "room-detail-and-unavailable-dates":
       return ACTIVITY_PUML.room_detail_and_unavailable_dates;
     case "reserve-and-price-calc":

@@ -1,0 +1,58 @@
+@startuml
+skinparam activityArrowColor Black
+skinparam activityBackgroundColor White
+skinparam wrapWidth 220
+skinparam maxMessageSize 200
+
+|Controller|
+start
+:입력값 검증(이름, 이메일, 전화, 비밀번호);
+:전화/이메일 정규화;
+:중복체크 요청;
+
+|Service|
+:countByEmail 호출;
+
+|Mapper/DB|
+:SELECT count(*) 
+ FROM t_member_info 
+ WHERE mi_id = #{email};
+
+|Service|
+if (isEmailDuplicate?) then (Y)
+  :에러: 중복 이메일;
+  |Controller|
+  :메시지 반환(EMAIL_DUPLICATE);
+  stop
+else (N)
+endif
+
+:countByPhone 호출;
+
+|Mapper/DB|
+:SELECT count(*) 
+ FROM t_member_info 
+ WHERE mi_phone = #{phone};
+
+|Service|
+if (isPhoneDuplicate?) then (Y)
+  :에러: 중복 전화;
+  |Controller|
+  :메시지 반환(PHONE_DUPLICATE);
+  stop
+else (N)
+endif
+
+:비밀번호 해시 및 MemberVO 구성;
+:회원 저장(handleRegister);
+
+|Mapper/DB|
+:INSERT INTO MEMBER;
+
+|Service|
+:가입 완료 후 후처리(로그/알림 선택);
+
+|Controller|
+:리다이렉트(/login);
+stop
+@enduml
