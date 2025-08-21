@@ -9,6 +9,7 @@ function ActivityDiagram() {
   const tabs = [
     { key: "signup-duplicate-check", label: "회원가입 중복체크" },
     { key: "recommend-fetch", label: "추천 조회" },
+    { key: "search-result", label: "검색결과" },
     { key: "bookmark-add", label: "북마크 추가" },
     { key: "bookmark-delete", label: "북마크 삭제" },
     { key: "room-detail-and-unavailable-dates", label: "객실 상세/예약불가일" },

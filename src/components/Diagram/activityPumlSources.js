@@ -64,29 +64,80 @@ skinparam activityArrowColor Black
 skinparam activityBackgroundColor White
 skinparam wrapWidth 220
 skinparam maxMessageSize 200
+title 추천 조회 (/stay/recommend/{rcId}, GET)
 
 |Controller|
 start
-:파라미터 파싱(rcId 또는 lcId);
-:RecommendService 호출;
+:요청 파싱 (rcId);
+:RecommendService.getRecommendStayList(rcId);
 
 |Service|
-if (rcId 존재?) then (Y)
-  :카테고리 추천 조회;
-  |Mapper/DB|
-  :SELECT stays BY rcId (RecommendMapper.getRecommend);
-  |Service|
-else (N)
-  :지역 추천 조회(lcId, limit);
-  |Mapper/DB|
-  :SELECT stays BY lcId LIMIT n (StayMapper.selectRecommendStayListByLcId);
-  |Service|
-endif
-:사용자 컨텍스트 반영(북마크 플래그 등, 옵션);
+:stayList = RecommendMapper.getRecommend(rcId);
+
+|Mapper/DB|
+:SELECT stays BY rcId;
 
 |Controller|
-:뷰 모델 구성(타이틀/목록/메타);
+if (principal != null) then (Y)
+  :miId = principal.getName();
+  :bookmarkIds = BookmarkService.getBookmarkList(miId);
+  :foreach stay in stayList\n→ stay.bookmarked = bookmarkIds.contains(stay.siId);
+endif
+:model.addAttribute("stayList", stayList);
+:model.addAttribute(rcId);
 :JSON 또는 뷰로 응답;
+stop
+@enduml`,
+
+  search_result: `@startuml
+skinparam activityArrowColor Black
+skinparam activityBackgroundColor White
+skinparam wrapWidth 220
+skinparam maxMessageSize 200
+title 숙소 검색 결과 조회 (/stay/search, GET)
+
+|Controller|
+start
+:요청 파싱 (lcId, rcId, checkin, checkout, adult, child);
+if (checkin == null or checkout == null) then (Y)
+  :기본값 설정\ncheckin=today, checkout=today+1;
+endif
+:totalPerson = adult + child;
+:param = {lcId, rcId, checkin, checkout, totalPerson};
+:StayService.getStayListFiltered(param);
+
+|Service|
+:stayList = StayMapper.selectStayListFiltered(param);
+
+|Mapper/DB|
+note right
+SELECT ...
+FROM t_stay_info s
+LEFT JOIN (메인사진) sp ON ...
+WHERE (:lcId = 0 OR s.lc_id = :lcId)
+  AND (:rcId = 0 OR EXISTS (
+        SELECT 1 FROM t_stay_recommend r
+        WHERE r.si_id = s.si_id AND r.rc_id = :rcId
+      ))
+  AND s.si_minperson <= :totalPerson
+  AND s.si_maxperson >= :totalPerson
+  AND 예약가능여부(checkin, checkout)
+  AND s.si_show = 1
+ORDER BY s.si_id DESC;
+end note
+
+|Service|
+:return stayList;
+
+|Controller|
+if (principal != null) then (Y)
+  :miId = principal.getName();
+  :bookmarkIds = BookmarkService.getBookmarkList(miId);
+  :foreach stay in stayList\n→ stay.bookmarked = bookmarkIds.contains(stay.siId);
+endif
+:model.addAttribute("stayList", stayList);
+:model.addAttribute(rcId, lcId, checkin, checkout, adult, child);
+:return view "search/search";
 stop
 @enduml`,
 

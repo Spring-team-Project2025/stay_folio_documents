@@ -19,6 +19,8 @@ function getPumlByTab(selectedTab) {
       return ACTIVITY_PUML.signup_duplicate_check;
     case "recommend-fetch":
       return ACTIVITY_PUML.recommend_fetch;
+    case "search-result":
+      return ACTIVITY_PUML.search_result;
     case "bookmark-add":
       return ACTIVITY_PUML.bookmark_add;
     case "bookmark-delete":
