@@ -9,6 +9,7 @@ function DiagramTopbar({ tab, onChangeTab }) {
     { key: "reservation", label: "예약" },
     { key: "room", label: "객실" },
     { key: "search", label: "숙소 검색" },
+    { key: "admin", label: "관리자" },
   ];
 
   return (

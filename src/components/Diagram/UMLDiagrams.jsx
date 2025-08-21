@@ -57,13 +57,13 @@ flowchart LR
     end
     
     subgraph "Business Layer"
-        CS["<b>CommonService</b><br/><i><<Interface>></i><br/>비즈니스 로직 정의"]
+        CS["<b>CommonService</b><br/>[Interface]<br/>비즈니스 로직 정의"]
         CSI["<b>CommonServiceImpl</b><br/><i>비즈니스 로직 구현</i><br/>• isEmailDuplicate()<br/>• isPhoneDuplicate()<br/>• handleRegister()<br/>• getRecommend()"]
     end
     
     subgraph "Data Access Layer"
-        CM["<b>CommonMapper</b><br/><i><<Interface>></i><br/><i>회원 데이터 접근</i><br/>• countByEmail()<br/>• countByPhone()<br/>• handleRegister()<br/>• read()"]
-        RM["<b>RecommendMapper</b><br/><i><<Interface>></i><br/><i>추천 데이터 접근</i><br/>• getRecommend()<br/>• getRecommendTitle()"]
+        CM["<b>CommonMapper</b><br/>[Interface]<br/><i>회원 데이터 접근</i><br/>• countByEmail()<br/>• countByPhone()<br/>• handleRegister()<br/>• read()"]
+        RM["<b>RecommendMapper</b><br/>[Interface]<br/><i>추천 데이터 접근</i><br/>• getRecommend()<br/>• getRecommendTitle()"]
     end
     
     subgraph "Data Objects"
@@ -110,12 +110,12 @@ flowchart LR
     end
     
     subgraph "Business Layer"
-        BS["<b>BookmarkService</b><br/><i><<Interface>></i><br/>북마크 비즈니스 로직"]
+        BS["<b>BookmarkService</b><br/>[Interface]<br/>북마크 비즈니스 로직"]
         BSI["<b>BookmarkServiceImpl</b><br/><i>북마크 로직 구현</i><br/>• addBookmark()<br/>• deleteBookmark()<br/>• getBookmarkList()"]
     end
     
     subgraph "Data Access Layer"
-        BM["<b>BookmarkMapper</b><br/><i><<Interface>></i><br/><i>북마크 데이터 접근</i><br/>• addBookmark()<br/>• deleteBookmark()<br/>• getBookmarkList()"]
+        BM["<b>BookmarkMapper</b><br/>[Interface]<br/><i>북마크 데이터 접근</i><br/>• addBookmark()<br/>• deleteBookmark()<br/>• getBookmarkList()"]
         SM["<b>StayMapper</b><br/><i>숙소 북마크 카운트</i><br/>• incBookmarkCount()<br/>• decBookmarkCount()"]
     end
     
@@ -162,12 +162,12 @@ flowchart LR
     end
     
     subgraph "Business Layer"
-        MS["<b>MypageService</b><br/><i><<Interface>></i><br/>마이페이지 비즈니스 로직"]
+        MS["<b>MypageService</b><br/>[Interface]<br/>마이페이지 비즈니스 로직"]
         MSI["<b>MypageServiceImpl</b><br/><i>마이페이지 로직 구현</i><br/>• readMemberById()<br/>• updateMemberProfile()<br/>• changePassword()<br/>• getReservationHistory()<br/>• getBookMarkList()"]
     end
     
     subgraph "Data Access Layer"
-        MM["<b>MypageMapper</b><br/><i><<Interface>></i><br/><i>마이페이지 데이터 접근</i><br/>• updateProfile()<br/>• updatePassword()<br/>• getReservationsByMember()<br/>• getBookMarkList()"]
+        MM["<b>MypageMapper</b><br/>[Interface]<br/><i>마이페이지 데이터 접근</i><br/>• updateProfile()<br/>• updatePassword()<br/>• getReservationsByMember()<br/>• getBookMarkList()"]
         CM["<b>CommonMapper</b><br/><i>회원 정보 접근</i><br/>• read()<br/>• countByPhone()"]
     end
     
@@ -218,12 +218,12 @@ flowchart LR
     end
     
     subgraph "Business Layer"
-        RES["<b>RecommendService</b><br/><i><<Interface>></i><br/>추천 비즈니스 로직"]
+        RES["<b>RecommendService</b><br/>[Interface]<br/>추천 비즈니스 로직"]
         RESI["<b>RecommendServiceImpl</b><br/><i>추천 로직 구현</i><br/>• getRecommendByLocation()<br/>• getRecommendByCategory()"]
     end
     
     subgraph "Data Access Layer"
-        REM["<b>RecommendMapper</b><br/><i><<Interface>></i><br/><i>추천 데이터 접근</i><br/>• getRecommend()<br/>• getRecommendTitle()"]
+        REM["<b>RecommendMapper</b><br/>[Interface]<br/><i>추천 데이터 접근</i><br/>• getRecommend()<br/>• getRecommendTitle()"]
         SM["<b>StayMapper</b><br/><i>숙소 데이터 접근</i><br/>• selectRecommendStayList()"]
     end
     
@@ -274,13 +274,13 @@ flowchart LR
     end
     
     subgraph "Business Layer"
-        RS["<b>ReservationService</b><br/><i><<Interface>></i><br/>예약 비즈니스 로직"]
+        RS["<b>ReservationService</b><br/>[Interface]<br/>예약 비즈니스 로직"]
         RSI["<b>ReservationServiceImpl</b><br/><i>예약 로직 구현</i><br/>• reserve()<br/>• cancelReservation()<br/>• getReservation()<br/>• calculatePrice()<br/>• processEmail()"]
     end
     
     subgraph "Data Access Layer"
-        RM["<b>ReservationMapper</b><br/><i><<Interface>></i><br/><i>예약 데이터 접근</i><br/>• insertReservation()<br/>• selectReservationById()<br/>• cancelReservation()<br/>• checkDuplicateReservation()"]
-        RPM["<b>ReservationPriceMapper</b><br/><i><<Interface>></i><br/><i>가격 정보 조회</i><br/>• getReservationPriceInfo()"]
+        RM["<b>ReservationMapper</b><br/>[Interface]<br/><i>예약 데이터 접근</i><br/>• insertReservation()<br/>• selectReservationById()<br/>• cancelReservation()<br/>• checkDuplicateReservation()"]
+        RPM["<b>ReservationPriceMapper</b><br/>[Interface]<br/><i>가격 정보 조회</i><br/>• getReservationPriceInfo()"]
     end
     
     subgraph "Data Objects"
@@ -330,12 +330,12 @@ flowchart LR
     end
     
     subgraph "Business Layer"
-        ROS["<b>RoomService</b><br/><i><<Interface>></i><br/>객실 비즈니스 로직"]
+        ROS["<b>RoomService</b><br/>[Interface]<br/>객실 비즈니스 로직"]
         ROSI["<b>RoomServiceImpl</b><br/><i>객실 로직 구현</i><br/>• getRoomById()<br/>• updateRoom()<br/>• getAmenitiesByRoomId()<br/>• getFacilitiesByRoomId()<br/>• getAllRoomPhotos()"]
     end
     
     subgraph "Data Access Layer"
-        ROM["<b>RoomMapper</b><br/><i><<Interface>></i><br/><i>객실 데이터 접근</i><br/>• getRoomById()<br/>• updateRoom()<br/>• getAmenitiesByRoomId()<br/>• getFacilitiesByRoomId()<br/>• getRoomPhotos()"]
+        ROM["<b>RoomMapper</b><br/>[Interface]<br/><i>객실 데이터 접근</i><br/>• getRoomById()<br/>• updateRoom()<br/>• getAmenitiesByRoomId()<br/>• getFacilitiesByRoomId()<br/>• getRoomPhotos()"]
         RSM["<b>ReservationService</b><br/><i>예약 가능일 확인</i><br/>• getUnavailableDates()"]
     end
     
@@ -390,12 +390,12 @@ flowchart LR
     end
     
     subgraph "Business Layer"
-        SS["<b>StayService</b><br/><i><<Interface>></i><br/>숙소 검색 비즈니스 로직"]
+        SS["<b>StayService</b><br/>[Interface]<br/>숙소 검색 비즈니스 로직"]
         SSI["<b>StayServiceImpl</b><br/><i>검색 로직 구현</i><br/>• searchStaysByKeyword()<br/>• getStayListFiltered()<br/>• searchStaysSuggestions()<br/>• getListWithPaging()<br/>• getTotalCount()"]
     end
     
     subgraph "Data Access Layer"
-        SM["<b>StayMapper</b><br/><i><<Interface>></i><br/><i>숙소 검색 데이터 접근</i><br/>• searchStaysByKeyword()<br/>• selectStayListFiltered()<br/>• searchStaysSuggestions()<br/>• getListWithPaging()<br/>• getTotalCount()"]
+        SM["<b>StayMapper</b><br/>[Interface]<br/><i>숙소 검색 데이터 접근</i><br/>• searchStaysByKeyword()<br/>• selectStayListFiltered()<br/>• searchStaysSuggestions()<br/>• getListWithPaging()<br/>• getTotalCount()"]
         BM["<b>BookmarkMapper</b><br/><i>북마크 상태 확인</i><br/>• getBookmarkList()"]
     end
     
@@ -437,6 +437,83 @@ flowchart LR
     class SS,SSI service
     class SM,BM mapper
     class SVO,SSRV,CRI vo
+    class DB db
+        `;
+
+      case "admin":
+        return `
+flowchart LR
+    subgraph "Presentation Layer"
+        AC["<b>AdminController</b><br/><i>관리자 기본 기능</i><br/>• StayForm()<br/>• addStay()<br/>• addRoom()<br/>• memberList()<br/>• showRoomRegister()"]
+        ADC["<b>AdminDashController</b><br/><i>대시보드 관리</i><br/>• DashBoard()"]
+        ALC["<b>AdminListController</b><br/><i>목록 관리</i><br/>• stayList()<br/>• roomList()<br/>• reservationList()<br/>• stayDetail()<br/>• roomDetail()"]
+        CUC["<b>CategoryUpdateController</b><br/><i>카테고리 관리</i><br/>• categoryDetail()<br/>• updateCategory()<br/>• insertCategoryStay()<br/>• deleteCategoryStay()"]
+        KUC["<b>KeywordUpdateController</b><br/><i>키워드 관리</i><br/>• keywordUpdateForm()<br/>• updateKeyword()"]
+        RUC["<b>RoomUpdateController</b><br/><i>객실 수정</i><br/>• showUpdateForm()<br/>• updateStay()"]
+        SUC["<b>StayUpdateController</b><br/><i>숙소 수정</i><br/>• showUpdateForm()<br/>• updateStay()"]
+        UC["<b>UploadController</b><br/><i>파일 업로드</i><br/>• uploadStayImages()<br/>• uploadRoomImages()"]
+    end
+    
+    subgraph "Business Layer"
+        AS["<b>AdminService</b><br/>[Interface]<br/>관리자 비즈니스 로직"]
+        ASI["<b>AdminServiceImpl</b><br/><i>관리자 로직 구현</i><br/>• getMemberList()<br/>• getReservationList()<br/>• updateCategory()<br/>• updateKeyword()<br/>• insertCategoryStay()<br/>• deleteCategoryStay()"]
+    end
+    
+    subgraph "Data Access Layer"
+        AM["<b>AdminMapper</b><br/>[Interface]<br/><i>관리자 데이터 접근</i><br/>• selectMembersWithPaging()<br/>• selectReservationList()<br/>• getCategory()<br/>• updateCategory()<br/>• insertCategoryStay()<br/>• deleteCategoryStay()"]
+    end
+    
+    subgraph "Data Objects"
+        ARLD["<b>AdminReservationListDTO</b><br/><i>관리자 예약 목록 객체</i><br/>• srId: String<br/>• srName: String<br/>• siName: String<br/>• srStatus: String<br/>• srCheckin: Date<br/>• srCheckout: Date"]
+        ARC["<b>AdminReservationCriteria</b><br/><i>예약 검색 조건</i><br/>• keyword: String<br/>• status: String<br/>• startDate: Date<br/>• endDate: Date"]
+        RSD["<b>ReservationStatsDTO</b><br/><i>예약 통계 객체</i><br/>• totalCount: int<br/>• completedCount: int<br/>• canceledCount: int<br/>• inProgressCount: int"]
+        MVO["<b>MemberVO</b><br/><i>회원 정보 객체</i><br/>• miId: String<br/>• miName: String<br/>• miPhone: String<br/>• miEnabled: boolean"]
+        RCVO["<b>RecommendCategoryVO</b><br/><i>추천 카테고리 객체</i><br/>• rcId: Integer<br/>• rcName: String<br/>• rcDetailTop: String"]
+    end
+    
+    subgraph "Utility Layer"
+        S3U["<b>S3Uploader</b><br/><i>파일 업로드 유틸</i><br/>• uploadStayPhoto()<br/>• uploadRoomPhoto()<br/>• updateStayImage()<br/>• updateRoomImage()"]
+        AWS["<b>AwsConfig</b><br/><i>AWS 설정</i><br/>• amazonS3()"]
+    end
+    
+    subgraph "Database"
+        DB["<b>Database</b><br/>Member Table<br/>Reservation Table<br/>Stay Table<br/>Room Table<br/>Category Table"]
+    end
+    
+    AC -->|"회원/숙소 관리"| ASI
+    ADC -->|"대시보드 데이터"| ASI
+    ALC -->|"목록 조회"| ASI
+    CUC -->|"카테고리 수정"| ASI
+    KUC -->|"키워드 수정"| ASI
+    
+    ASI -.->|implements| AS
+    ASI -->|"관리자 데이터 처리"| AM
+    
+    RUC -->|"파일 업로드"| S3U
+    SUC -->|"파일 업로드"| S3U
+    UC -->|"파일 업로드"| S3U
+    
+    AM -->|"DB 쿼리"| DB
+    S3U -->|"AWS S3"| AWS
+    
+    AM -.->|"데이터 매핑"| ARLD
+    AM -.->|"통계 매핑"| RSD
+    AM -.->|"회원 매핑"| MVO
+    AM -.->|"카테고리 매핑"| RCVO
+    ASI -.->|"검색 조건 사용"| ARC
+    
+    classDef controller fill:none,stroke:#333,stroke-width:2px,color:#333,font-weight:bold,font-size:11px
+    classDef service fill:none,stroke:#333,stroke-width:2px,color:#333,font-weight:bold,font-size:11px
+    classDef mapper fill:none,stroke:#333,stroke-width:2px,color:#333,font-weight:bold,font-size:11px
+    classDef vo fill:none,stroke:#333,stroke-width:2px,color:#333,font-weight:bold,font-size:11px
+    classDef utility fill:none,stroke:#333,stroke-width:2px,color:#333,font-weight:bold,font-size:11px
+    classDef db fill:none,stroke:#333,stroke-width:2px,color:#333,font-weight:bold,font-size:11px
+    
+    class AC,ADC,ALC,CUC,KUC,RUC,SUC,UC controller
+    class AS,ASI service
+    class AM mapper
+    class ARLD,ARC,RSD,MVO,RCVO vo
+    class S3U,AWS utility
     class DB db
         `;
 

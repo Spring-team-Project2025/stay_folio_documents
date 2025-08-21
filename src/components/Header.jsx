@@ -23,6 +23,12 @@ function Header({ activeTab, onNavigate }) {
           >
             <span className="nav-label-kr">다이어그램</span>
           </button>
+          <button
+            className={`nav-item ${activeTab === "activity" ? "active" : ""}`}
+            onClick={() => onNavigate("activity")}
+          >
+            <span className="nav-label-kr">액티비티 다이어그램</span>
+          </button>
         </nav>
       </div>
     </header>
