@@ -3,7 +3,6 @@ import DatabaseDescTables from "./DatabaseDescTables";
 import DatabaseDescRelationships from "./DatabaseDescRelationships";
 import "../../styles/Database/DatabaseDesc.css";
 import "../../styles/Database/DatabaseTables.css";
-import "../../styles/Database/DatabaseRelationships.css";
 
 function DatabaseDesc() {
   return (

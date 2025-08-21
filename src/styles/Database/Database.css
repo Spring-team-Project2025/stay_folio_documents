@@ -23,10 +23,10 @@
 
 .db-tab {
   appearance: none;
-  font-size: var(--body1);
+  font-size: 14px;
   background: none;
   border: none;
-  color: var(--neutral-600);
+  color: var(--neutral-500);
   padding: 8px 16px;
   position: relative;
   cursor: pointer;
@@ -38,7 +38,7 @@
 }
 
 .db-tab.is-active {
-  color: var(--primary-600);
+  color: var(--primary-500);
   font-weight: 600;
 }
 

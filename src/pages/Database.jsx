@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../styles/Database/Database.css";
-import "../styles/Database/DatabaseRelationships.css";
 import DatabaseTopbar from "../components/Database/DatabaseTopbar";
 import DatabaseDesc from "../components/Database/DatabaseDesc";
 import DatabaseERD from "../components/Database/DatabaseERD";
